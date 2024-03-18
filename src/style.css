@@ -1,0 +1,88 @@
+body {
+  font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
+  background-color: #f9f7fe;
+}
+
+form {
+  margin-right: 40px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  line-height: 48px;
+  font-weight: 800;
+  font-size: 45px;
+  letter-spacing: -0.02em;
+  color: #141414;
+  text-align: center;
+}
+
+h3 {
+  margin-top: 40px;
+}
+
+p {
+  color: #a9a6b3;
+  line-height: 25px;
+}
+
+a {
+  color: #885df1;
+}
+
+input {
+  background-color: #f9f7fe;
+  border-style: none;
+  border-radius: 5px;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  font-size: medium;
+  height: 10px;
+  width: 25%;
+  margin-right: 10px;
+}
+
+.app_container {
+  margin: 0 auto;
+  background-color: white;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin-top: 55px;
+  padding: 55px 25px;
+  padding-bottom: 0;
+  height: fit-content;
+  width: fit-content;
+}
+
+.button {
+  background-color: rgb(136, 93, 241);
+  border-style: none;
+  border-radius: 5px;
+  padding: 0px 5px;
+  font-size: medium;
+  color: white;
+  width: 90px;
+  height: 40px;
+}
+
+.button:hover {
+  background-color: #685e80;
+}
+
+.header-emoji {
+  padding-top: 20px;
+  display: block;
+}
+
+#message-mqtt {
+  background-color: #f9f7fe;
+  min-height: 100px;
+  border-radius: 5px;
+  border-color: #685e80;
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+}
