@@ -4,7 +4,7 @@ body {
 }
 
 form {
-  margin-right: 40px;
+  margin-right: 20px;
   margin-bottom: 20px;
 }
 
@@ -38,7 +38,7 @@ input {
   margin-bottom: 10px;
   font-size: medium;
   height: 10px;
-  width: 25%;
+  width: 40%;
   margin-right: 10px;
 }
 
@@ -49,12 +49,11 @@ input {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  max-width: 900px;
+  max-width: 1000px;
   margin-top: 55px;
   padding: 55px 25px;
   padding-bottom: 0;
   height: fit-content;
-  width: fit-content;
 }
 
 .button {
@@ -66,6 +65,7 @@ input {
   color: white;
   width: 90px;
   height: 40px;
+  margin-top: 10px;
 }
 
 .button:hover {
@@ -85,4 +85,8 @@ input {
   border-style: solid;
   border-width: 1px;
   padding: 5px;
+  word-wrap: break-word;
+  max-height: 500px;
+  overflow: scroll;
+  padding: 20px;
 }

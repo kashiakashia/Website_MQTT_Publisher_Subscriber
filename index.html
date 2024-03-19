@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js"
+        type="text/javascript"></script>
+    <script src="src/script.js" type="text/javascript"></script>
     <title>MQTT Web Subscriber And Publisher ✨</title>
 </head>
 
@@ -29,10 +32,10 @@
 
         <h3>Subscription topic</h3>
         <form id="mqtt-connector">
-            <input id="topic-subscriber" type="text" name="topic-subscriber" value="">
-
-            <input type="button" class="button" onclick="" value="Connect">
-            <input type="button" class="button" onclick="" value="Disconnect">
+            <input id="topic-subscriber" type="text" name="topic-subscriber" placeholder="Subscribed Topic" value="#">
+            <br>
+            <input type="button" class="button" onclick="ConnectToBroker()" value="Connect">
+            <input type="button" class="button" onclick="DisconnectFromBroker()" value="Disconnect">
         </form>
 
         <h3>Publish Topic and Message:</h3>
@@ -40,7 +43,7 @@
             <input id="topic-publisher" type="text" name="topic-publisher" placeholder="Topic">
             <input id="message-publisher" type="text" name="message-publisher" placeholder="Message">
 
-            <input type="button" class="button" onclick="" value="Publish">
+            <input type="button" class="button" onclick="PublishMessageToTopic()" value="Publish">
         </form>
 
 
@@ -55,7 +58,6 @@
                 <a href="" target="_blank">hosted on Netlify</a>
             </p>
         </footer>
-        <script src="src/script.js"></script>
     </div>
 </body>
 

@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "paho-mqtt": "^1.1.0",
+    "type": "module",
+    "main": "script.js"
+  },
+  "devDependencies": {
+    "@types/paho-mqtt": "^1.0.10"
+  }
+}
