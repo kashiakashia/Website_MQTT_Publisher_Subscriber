@@ -1,55 +1,49 @@
 function ConnectToBroker() {
-  clientID = "clientID: " + parseInt(Math.random() * 100);
-  console.log(clientID);
-
-  host = document.getElementById("host").value;
+  host = "wws://" + document.getElementById("host").value;
   port = document.getElementById("port").value;
   userID = document.getElementById("username").value;
   passwordID = document.getElementById("password").value;
 
-  document.getElementById("message-mqtt").innerHTML +=
-    "<span>Connecting to " + host + "on port " + port + "</span> <br/>";
+  var options = {
+    host: host,
+    schema: "wss://",
+    path: "/mqtt",
+    port: port,
+    protocol: "mqtts",
+    username: userID,
+    password: passwordID,
+  };
+
+  const client = mqtt.connect(host, options);
 
   document.getElementById("message-mqtt").innerHTML +=
-    "<span>Using the client ID " + clientID + "</span> <br/>";
+    "<span>Connecting to " + host + " on port " + port + "</span> <br/>";
 
-  client = new Paho.MQTT.Client(host, Number(port), clientID);
+  document.getElementById("message-mqtt").innerHTML +=
+    "<span>Using the client ID " + client.options.clientId + "</span> <br/>";
 
-  client.onConnectionLost = onConnectionLost;
-  client.onMessageArrived = onMessageArrived;
-
-  client.connect({
-    onSuccess: onConnect,
+  client.on("connect", function () {
+    console.log("Client connected");
   });
-}
 
-function onConnect() {
+  //-------------------------
+
   topic = document.getElementById("topic-subscriber").value;
   document.getElementById("message-mqtt").innerHTML +=
     "<span>Subscribed to topic " + topic + "</span> <br/>";
   client.subscribe(topic);
+
+  client.on("message", function (topic, message) {
+    // message is Buffer
+    console.log("sub: " + message.toString());
+  });
+
+  return client;
 }
 
-function onConnectionLost(responseObject) {
-  document.getElementById("message-mqtt").innerHTML +=
-    "<span>ERROR: Connection is lost</span> <br/>";
-
-  if (responseObject != 0) {
-    document.getElementById("message-mqtt").innerHTML +=
-      "<span>ERROR:" + responseObject.errorMessage + "</span> <br/>";
-  }
+function DisconnectFromBroker(client) {
+  client.end(true);
+  console.log(
+    "Client with ID: " + client.options.clientId + ", is disconnected"
+  );
 }
-
-function onMessageArrived(message) {
-  console.log("onMessageArrived" + message.payloadString);
-  document.getElementById("message-mqtt").innerHTML +=
-    "<span>Topic: " +
-    message.destinationName +
-    "Message: " +
-    message.payloadString +
-    "</span> <br/>";
-}
-
-function DisconnectFromBroker() {}
-
-function PublishMessageToTopic() {}
