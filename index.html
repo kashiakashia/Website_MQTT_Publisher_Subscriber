@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
-    <script src="src/script.js" type="text/javascript"></script>
     <title>MQTT Web Subscriber And Publisher ✨</title>
 </head>
 
@@ -19,14 +18,15 @@
 
         <h3>Hostname or IP Address and Port Number</h3>
         <form class="mqtt-connector">
-            <input id="host" type="text" name="host" placeholder="Broker Address">
+            <input id="host" type="text" name="host" placeholder="Broker Address"
+                value="771fd6f6869c49e7b0f18902a2463be8.s2.eu.hivemq.cloud">
             <input id="port" type="text" name="port" value="8884">
         </form>
 
         <h3>Username and Password</h3>
         <form class="mqtt-connector">
-            <input id="username" type="text" name="username" placeholder="Username">
-            <input id="password" type="password" name="password" placeholder="Password">
+            <input id="username" type="text" name="username" placeholder="Username" value="esp32-iot">
+            <input id="password" type="password" name="password" placeholder="Password" value="Esp-detector_007">
         </form>
 
         <h3>Subscription topic</h3>
@@ -34,8 +34,8 @@
             <input id="topic-subscriber" type="text" name="topic-subscriber" placeholder="Subscribed Topic"
                 value="iot/device/detector_001/telemetry">
             <br>
-            <input type="button" class="button" onclick="ConnectToBroker()" value="Connect">
-            <input type="button" class="button" onclick="DisconnectFromBroker()" value="Disconnect">
+            <input id="connect" class="button" type="submit" value="Connect" />
+            <input id="disconnect" class="button" type="button" value="Disconnect">
         </form>
 
         <h3>Publish Topic and Message:</h3>
@@ -59,6 +59,7 @@
             </p>
         </footer>
     </div>
+    <script src="src/script.js" type="text/javascript"></script>
 </body>
 
 </html>
