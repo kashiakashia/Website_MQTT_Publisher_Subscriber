@@ -1,4 +1,3 @@
-//<input type="button" class="button" onclick="ConnectToBroker()" value="Connect">
 let client;
 let con = document.querySelector("#connect");
 con.addEventListener("click", connectToBroker);
@@ -6,12 +5,16 @@ con.addEventListener("click", connectToBroker);
 let dis = document.querySelector("#disconnect");
 dis.addEventListener("click", disconnectFromBroker);
 
-function connectClient(options) {
-  client = mqtt.connect(options.host, options);
+let pub = document.querySelector("#publish");
+pub.addEventListener("click", publishToBroker);
+
+//----------------------- functions ------------------------------------------
+
+function connectClient(host, options) {
+  client = mqtt.connect(host, options);
 
   document.getElementById("message-mqtt").innerHTML +=
     "<span>Connecting to " + host + " on port " + port + "</span> <br/>";
-
   document.getElementById("message-mqtt").innerHTML +=
     "<span>Using the client ID " + client.options.clientId + "</span> <br/>";
 
@@ -22,8 +25,8 @@ function connectClient(options) {
   topic = document.getElementById("topic-subscriber").value;
   document.getElementById("message-mqtt").innerHTML +=
     "<span>Subscribed to topic " + topic + "</span> <br/>";
-  client.subscribe(topic);
 
+  client.subscribe(topic);
   client.on("message", function (topic, message) {
     // message is Buffer
     console.log("sub: " + message.toString());
@@ -47,7 +50,7 @@ function connectToBroker(event) {
     password: passwordID,
   };
 
-  connectClient(options);
+  connectClient(host, options);
 }
 
 function disconnectFromBroker(event) {
@@ -64,4 +67,19 @@ function stopConnection(client) {
       "Client with ID: " + client.options.clientId + ", is disconnected"
     );
   }, 10); // stop after 0.0001sec
+}
+
+function publishToBroker(event) {
+  event.preventDefault();
+  console.log("test");
+
+  var topic_publisher = document.getElementById("topic-publisher").value;
+  var message_publisher = document.getElementById("message-publisher").value;
+  client.publish(topic_publisher, message_publisher);
+  document.getElementById("message-mqtt").innerHTML +=
+    "<span>Published to topic " +
+    topic_publisher +
+    " ,the message: " +
+    message_publisher +
+    "</span> <br/>";
 }
