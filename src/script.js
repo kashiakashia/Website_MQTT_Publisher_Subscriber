@@ -8,7 +8,22 @@ dis.addEventListener("click", disconnectFromBroker);
 let pub = document.querySelector("#publish");
 pub.addEventListener("click", publishToBroker);
 
+let subscribe = document.querySelector("#subscribe");
+subscribe.addEventListener("click", subscribeTopic);
+
 //----------------------- functions ------------------------------------------
+function subscribeTopic(event) {
+  event.preventDefault();
+  topic = document.getElementById("topic-subscriber").value;
+  document.getElementById("message-mqtt").innerHTML +=
+    "<span>Subscribed to topic " + topic + "</span> <br/><br/><br/>";
+
+  client.subscribe(topic);
+  client.on("message", function (topic, message) {
+    document.getElementById("message-mqtt").innerHTML +=
+      "<span>Sub: " + message.toString() + "</span> <br/>";
+  });
+}
 
 function connectClient(host, options) {
   client = mqtt.connect(host, options);
@@ -20,16 +35,6 @@ function connectClient(host, options) {
 
   client.on("connect", function () {
     console.log("Client connected");
-  });
-
-  topic = document.getElementById("topic-subscriber").value;
-  document.getElementById("message-mqtt").innerHTML +=
-    "<span>Subscribed to topic " + topic + "</span> <br/>";
-
-  client.subscribe(topic);
-  client.on("message", function (topic, message) {
-    // message is Buffer
-    console.log("sub: " + message.toString());
   });
 }
 
@@ -61,7 +66,7 @@ function disconnectFromBroker(event) {
 
 function stopConnection(client) {
   setTimeout(function () {
-    //clearInterval(pubLoop);
+    //clearInterval(pubLoop);           // dopisać pętlę do pub /sub? dodać obiekty osobne pub sub?
     client.end();
     console.log(
       "Client with ID: " + client.options.clientId + ", is disconnected"

@@ -15,10 +15,11 @@ h1 {
   letter-spacing: -0.02em;
   color: #141414;
   text-align: center;
+  margin-bottom: 60px;
 }
 
 h3 {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 p {
@@ -31,15 +32,52 @@ a {
 }
 
 input {
-  background-color: #f9f7fe;
+  background-color: #e6e1f1;
   border-style: none;
   border-radius: 5px;
-  padding: 15px 20px;
+  padding: 15px 10px;
   margin-bottom: 10px;
-  font-size: medium;
+  font-size: 15px;
   height: 10px;
-  width: 40%;
+  width: 25%;
   margin-right: 10px;
+}
+
+#host {
+  width: 48%;
+}
+
+#port {
+  width: 7%;
+}
+
+#username,
+#password {
+  width: 15%;
+}
+
+#message-mqtt {
+  background-color: #f9f7fe;
+  height: 200px;
+  border-radius: 5px;
+  border-color: #302b3b;
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  word-wrap: break-word;
+  max-height: 500px;
+  overflow: scroll;
+  padding: 20px;
+  font-size: 14px;
+  color: #685e80;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#emoji-decor {
+  padding-left: 40px;
+  font-size: 30px;
+  display: inline;
+  text-align: right;
 }
 
 .app_container {
@@ -50,14 +88,14 @@ input {
   display: flex;
   flex-direction: column;
   max-width: 1000px;
-  margin-top: 55px;
+  margin-top: 20px;
   padding: 55px 25px;
   padding-bottom: 0;
   height: fit-content;
 }
 
 .button {
-  background-color: rgb(136, 93, 241);
+  background-color: rgb(90, 72, 136);
   border-style: none;
   border-radius: 5px;
   padding: 0px 5px;
@@ -70,23 +108,4 @@ input {
 
 .button:hover {
   background-color: #685e80;
-}
-
-.header-emoji {
-  padding-top: 20px;
-  display: block;
-}
-
-#message-mqtt {
-  background-color: #f9f7fe;
-  min-height: 100px;
-  border-radius: 5px;
-  border-color: #685e80;
-  border-style: solid;
-  border-width: 1px;
-  padding: 5px;
-  word-wrap: break-word;
-  max-height: 500px;
-  overflow: scroll;
-  padding: 20px;
 }
