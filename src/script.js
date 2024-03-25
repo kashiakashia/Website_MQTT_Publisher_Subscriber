@@ -1,4 +1,4 @@
-let client;
+let client = null;
 let con = document.querySelector("#connect");
 con.addEventListener("click", connectToBroker);
 
@@ -10,6 +10,8 @@ pub.addEventListener("click", publishToBroker);
 
 let subscribe = document.querySelector("#subscribe");
 subscribe.addEventListener("click", subscribeTopic);
+
+let clientStatus = document.getElementById("status");
 
 //----------------------- functions ------------------------------------------
 function subscribeTopic(event) {
@@ -35,6 +37,8 @@ function connectClient(host, options) {
 
   client.on("connect", function () {
     console.log("Client connected");
+    clientStatus.innerHTML = "Connected";
+    clientStatus.style.color = "#23a827";
   });
 }
 
@@ -72,6 +76,8 @@ function stopConnection(client) {
       "Client with ID: " + client.options.clientId + ", is disconnected"
     );
   }, 10); // stop after 0.0001sec
+  clientStatus.innerHTML = "Disconnected";
+  clientStatus.style.color = "#e20a40";
 }
 
 function publishToBroker(event) {

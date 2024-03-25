@@ -16,16 +16,19 @@
             🛰️✨
         </h1>
 
-        <h3>Log to the MQTT [host, port, user, password]</h3>
+        <h3>Log to the MQTT</h3>
         <form class="mqtt-connector">
             <input id="host" type="text" name="host" placeholder="Broker Address" value="">
-            <input id="port" type="text" name="port" placeholder="Port" value=""><br />
+            <input id="port" type="text" name="port" placeholder="Port" value="8884"><br />
             <input id="username" type="text" name="username" placeholder="Username" value="">
             <input id="password" type="password" name="password" placeholder="Password" value="">
 
             <input id="connect" class="button" type="submit" value="Connect" />
             <input id="disconnect" class="button" type="button" value="Disconnect">
         </form>
+        <h5>Status: <span id="status">Disconnected</span></h5>
+
+        <hr>
 
         <h3>Subscription topic</h3>
         <form class="mqtt-connector">
@@ -52,7 +55,8 @@
             <p>
                 This project was coded by
                 <a href="https://github.com/kashiakashia" target="_blank">Katarzyna Smelcerz</a> ✨ and is
-                <a href="https://github.com/kashiakashia" target="_blank"> on GitHub</a> and
+                <a href="https://github.com/kashiakashia/Website_MQTT_Publisher_Subscriber" target="_blank"> on
+                    GitHub</a> and
                 <a href="" target="_blank">hosted on Netlify</a>
             </p>
         </footer>

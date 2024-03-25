@@ -22,6 +22,10 @@ h3 {
   margin-top: 20px;
 }
 
+h5 {
+  margin-block-start: 0;
+}
+
 p {
   color: #a9a6b3;
   line-height: 25px;
@@ -41,6 +45,19 @@ input {
   height: 10px;
   width: 25%;
   margin-right: 10px;
+}
+
+hr {
+  border: 0;
+  clear: both;
+  display: block;
+  width: 96%;
+  background-color: #685e80;
+  height: 0.5px;
+  margin: 0;
+  padding: 0;
+  margin-block-end: 2em;
+  margin-inline-end: 0;
 }
 
 #host {
@@ -78,6 +95,10 @@ input {
   font-size: 30px;
   display: inline;
   text-align: right;
+}
+
+#status {
+  color: #e20a40;
 }
 
 .app_container {
