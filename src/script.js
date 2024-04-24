@@ -44,7 +44,7 @@ function connectClient(host, options) {
 
 function connectToBroker(event) {
   event.preventDefault();
-  host = "wws://" + document.getElementById("host").value;
+  host = "wss://" + document.getElementById("host").value;
   port = document.getElementById("port").value;
   userID = document.getElementById("username").value;
   passwordID = document.getElementById("password").value;
